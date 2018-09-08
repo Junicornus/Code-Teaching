@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Neue Wege in die Sprachförderung</title>
+      <style link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=EB+Garamond">
+      nav ul {
+        margin: 0;
+        padding: 0;
+      }
+      nav li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .dropdown {
+          position: relative;
+          display: inline-block;
+          background-color: #0093d3;
+          min-width: 250px;
+          border-bottom: 1px
+          border-color: white;
+      }
+
+      .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #0093d3;
+          min-width: 250px;
+          box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+          padding: 0px 0px;
+          z-index: 10000000;
+      }
+
+      .dropdown:hover .dropdown-content {
+          display: block;
+      }
+
+      body {
+        overflow: scroll;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .left {
+        float: left;
+      }
+      </style>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="content-script-type" content="text/javascript" />
+      <meta http-equiv="content-style-type" content="text/css" />
+      <meta http-equiv="content-language" content="de" />
+      <meta name="author" content="Jennifer Nicolay" />
+      <link rel="stylesheet" type="text/css" href="map.css"></link>
+      <!--[if IE]>
+      <link rel="stylesheet" type="text/css" href="ie_map.css"></link>
+      <![endif]-->
+      <script type="text/javascript" src="http://www.openlayers.org/api/OpenLayers.js"></script>
+      <script type="text/javascript" src="http://www.openstreetmap.org/openlayers/OpenStreetMap.js"></script>
+      <script type="text/javascript" src="tom.js"></script>
+
+      <script type="text/javascript">
+      //<![CDATA[
+
+      var map;
+      var layer_mapnik;
+      var layer_tah;
+      var layer_markers;
+
+      function drawmap() {
+          // Popup und Popuptext mit evtl. Grafik
+          var popuptext="<font color=\"black\"><b>JOBLINGE Kompass Frankfurt<br>Eschenheimer Landstra&szlig;e 34<br>60322 Frankfurt am Main</b></font>";
+          var popuptext02="<font color=\"black\"><b>beramí berufliche Integration e.V.<br>Nibelungenplatz 3<br>60318 Frankfurt am Main</br></font>";
+          var popuptext03="<font color=\"black\"><b>Caritasverband Frankfurt e. V.<br>Projektzentrum Griesheim<br>Eichenstr. 74<br>65933 Frankfurt am Main</b><p><img src=\"\" width=\"190\" height=\"150\"></p></font>";
+          var popuptext04="<font color=\"black\"><b>GFFB gGmbH<br>Mainzer Landstraße 349<br>60326 Frankfurt am Main</b></font>";
+          var popuptext05="<font color=\"black\"><b>Johann Wolfgang Goethe-Universitäts<br>Theodor-W.-Adorno-Platz 6<br>60323 Frankfurt am Main<br>PEG-Gebäude<br>Raum 2.G089</b></font>";
+          var popuptext06="<font color=\"black\"><b>Ökumenischer Familien-Markt<br>Röntgenstr. 10<br>60388 Frankfurt am Main</b></font>";
+          var popuptext07="<font color=\"black\"><b>Volkshochschule <br>Sonnemannstraße 13<br>60314 Frankfurt am Main</b></font>";
+          var popuptext08="<font color=\"black\"><b>Zentrum für Weiterbildung – Produktionsschule <br>Friesengasse 7<br>60487 Frankfurt am Main</b></font>";
+          var popuptext09="<font color=\"black\"><b>FaberiS<br>Mainzer Landstr. 407<br>60326 Frankfurt am Main</b></font>";
+
+          OpenLayers.Lang.setCode('de');
+
+          // Position und Zoomstufe der Karte
+          var lon = 8.677149;
+          var lat = 50.120174;
+          var zoom = 15;
+
+          map = new OpenLayers.Map('map', {
+              projection: new OpenLayers.Projection("EPSG:900913"),
+              displayProjection: new OpenLayers.Projection("EPSG:4326"),
+              controls: [
+                  new OpenLayers.Control.Navigation(),
+                  new OpenLayers.Control.LayerSwitcher(),
+                  new OpenLayers.Control.PanZoomBar()],
+              maxExtent:
+                  new OpenLayers.Bounds(-20037508.34,-20037508.34,
+                                          20037508.34, 20037508.34),
+              numZoomLevels: 18,
+              maxResolution: 156543,
+              units: 'meters'
+          });
+
+          layer_mapnik = new OpenLayers.Layer.OSM.Mapnik("Mapnik");
+          layer_markers = new OpenLayers.Layer.Markers("Address", { projection: new OpenLayers.Projection("EPSG:4326"),
+          	                                          visibility: true, displayInLayerSwitcher: false });
+
+          map.addLayers([layer_mapnik, layer_markers]);
+          jumpTo(lon, lat, zoom);
+
+          // Position des Markers
+          addMarker(layer_markers, 8.677149, 50.120174, popuptext);
+          addMarker(layer_markers, 8.702126, 50.126587, popuptext02);
+          addMarker(layer_markers, 8.597239, 50.095919, popuptext03);
+          addMarker(layer_markers, 8.635307, 50.102093, popuptext04);
+          addMarker(layer_markers, 8.669455, 50.128682, popuptext05);
+          addMarker(layer_markers, 8.747978, 50.142455, popuptext06);
+          addMarker(layer_markers, 8.698707, 50.110362, popuptext07);
+          addMarker(layer_markers, 8.640003, 50.123996, popuptext08);
+          addMarker(layer_markers, 8.660955, 50.109555, popuptext09);
+
+      }
+
+      //]]>
+      </script>
+  </head>
+  <body>
+    <div class="right">
+      <img src="Logos.jpg" width=100%/>
+    <ul></ul>
+    <!-- BG Color JOBLINGE Blau HTML 0093d3 -->
+    </div>
+    <div class:"left">
+      <h1>Neue Wege in die Sprachförderung</h1>
+      <h2>JOBLINGE zeigt Ihnen den Weg zu den Sprachlernorten</h2>
+    </div>
+    <hr>
+      <h1>Überblick Veranstaltungen Kongress</h1>
+      <div class="left">
+        <div class="dropdown">
+          <nav>
+            <ul>
+              <li><h2><a href=#>VORMITTAG</a></h2></br><a href=#>9:00 - 11:00 h</a></li>
+              <div class="dropdown-content">
+                <ul>
+                  <li><a href="http://www.caritas-frankfurt.de/startseite/startseite">Caritasverband Frankfurt e.V.</a></li>
+                  <li><a href="https://www.andreadecapua.com/">Vortrag Andrea DeCapua (Ort: GFFB)</a></li>
+                  <li><a href="http://www.edupoli.fi/">Edupoli (Ort: GFFB)</a></li>
+                  <li><a href="http://www.tellmeproject.com/">Erasmus + TELL ME (Ort: GFFB)</a></li>
+                  <li><a href="https://faberis.de/">FaberiS</a></li>
+                  <li><a href="https://www.gffb.de/angebote/berufsintegrierte-sprachfoerderung/activcenter-ac.html">GFFB-Aktiv Center</a></li>
+                  <li><a href="https://www.linguatv.com/#framework">Lingua TV (Ort: GFFB)</a></li>
+                  <li><a href="http://www.familienmarkt-frankfurt.de/">Ökumenischer Familien-Markt</a></li>
+                  <li><a href="http://pure.au.dk/portal/en/persons/karen-lund(e26407ad-318b-4d01-a666-a617259d4014).html">Vortrag I Karen Lund (Ort: GFFB)</a></li>
+                </ul>
+              </div>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    <div class="left">
+      <div class="dropdown">
+        <nav>
+          <ul>
+            <li><h2><a href=#>NACHMITTAG</a></h2></br><a href=#>12:00 - 14:00 h</a></li>
+            <div class="dropdown-content">
+              <ul>
+                <li><a href="http://pure.au.dk/portal/en/persons/karen-lund(e26407ad-318b-4d01-a666-a617259d4014).html">Vortrag II Karen Lund (Ort: GFFB)</a></li>
+                <li><a href="https://www.gffb.de/angebote/berufsintegrierte-sprachfoerderung/modelprojekt-handel-im-wandel.html">12:00-14:00 Uhr: GFFB-Modellprojekt</a></li>
+                <li><a href="https://www.daf.uni-muenchen.de/index.html">12:00-14:00 Uhr: Institut für DaF LMU München (Ort: GFFB)</a></li>
+                <li><a href="https://multilingua-akademie.de/">12:00-14:00 Uhr: Multilingua Akademie (Ort: GFFB)</a></li>
+                <li><a href="https://www.gffb.de/angebote/berufsintegrierte-sprachfoerderung/kongress-berufliche-sprachfoerderung/workshops.html">12:00-14:00 Uhr: DUAL-A App (Ort: GFFB)</a></li>
+                <li><a href="http://www.lernen-lehren-helfen.de/">12:00-14:00 Uhr: Lernen-Lehren-Helfen (Ort: GFFB)</a></li>
+                <li><a href="https://uni-frankfurt.de">12:00-14:00 Uhr: JWG Universität Frankfurt (PEG Raum 2.G089)</a></li>
+                <li><a href="http://zfw.de/">12:00-14:00 Uhr: ZfW Produktionsschule Frankfurt</a></li>
+              </ul>
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="left">
+      <div class="dropdown">
+        <nav>
+          <ul>
+            <li><h2><a href=#>Präsentiert von</a></h2></br><a href="https://www.joblinge.de/standorte/wiesbaden/profil/">JOBLINGE Kompass Wiesbaden</a></li>
+            <div class="dropdown-content">
+              <ul>
+                <li><img src="coding-joblinge.jpg" width="250px">Karam Alsaid, Belader Masoud, Nagham Nader</li>
+                <li><p>Diese Seite wurde in einem 2 mal halbtägigen Pilot-Seminar in HTML, CSS und JavaScript erstellt. Vielen Dank an das Coding-Team der 3. Kompass-Gruppe in Wiesbaden!<p></li>
+                <li><a href="http://joblinge.de">JOBLINGE gAG FrankfurtRheinMain</a></li>
+              </ul>
+            </div>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <div>
+      <body onload="drawmap();">
+    </div>
+    <div id="map">
+    </div>
+    <div id="osm">© <a href="http://www.openstreetmap.org">OpenStreetMap</a>
+      und <a href="http://www.openstreetmap.org/copyright">Mitwirkende</a>,
+      <a href="http://creativecommons.org/licenses/by-sa/2.0/deed.de">CC-BY-SA</a>
+    </div>
+    <div class="left">
+      <p>Diese Seite wurde programmiert von JOBLINGE Kompass-Teilnehmer*innen aus Wiesbaden:
+        </br>Nagham Nader, Belader Masoud und Karam Alsaid; in Zusammenarbeit mit Jennifer Nicolay (JOBLINGE gAG FrankfurtRheinMain).
+      </p>
+    </div>
+
+    </br></br>
+
+  </body>
+</html>

@@ -1,0 +1,139 @@
+*{
+  margin:5px;
+  padding:0px;
+  font-family:sans-serif;
+}
+.header, .footer {
+    background-color: white;
+    color: #0093d3;
+    padding: 3% 3%;
+}
+
+.column {
+    float: left;
+    padding: 0px;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+hr {
+  background-color:#0093d3;
+  color:#0093d3;
+  border:#0093d3;
+  height:3px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+nav ul li {
+  list-style: none;
+  width: 25%;
+  min-width: 200px;
+  padding: 15px 10px;
+  border-bottom: 1px;
+  border-color: rgba(255, 0, 0, 0.5);
+  background-color: #0093d3;
+}
+
+#nav, #nav ul {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+}
+#nav li {
+    width:128px;
+    float:left;
+}
+#nav li ul {
+    display:none;
+}
+#nav li:hover ul {
+    display:block;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: white;
+  background-color: #0093d3;
+}
+nav a:focus,
+nav a:hover,
+nav a:active {
+  color: white;
+  text-decoration:underline;
+}
+
+html,body {
+  background-color:#ffffff;
+  height: 100%;
+  width: 100%;
+  margin: 1px; padding: 0px 0px;
+  font-family:Arial, Helvetica;
+  font-size: 1em;
+  overflow: hidden;
+  color: #4d4d4d;
+  overflow-y: scroll;
+
+}
+h1 {
+color:#0093d3;   /* Farbe JOBLINGE blau */
+font-size:28pt;  /* Größe 28pt   */
+font-family: EB Garamond; /* Schriftart */
+font-weight:400;
+}
+h2 {
+color:#0093d3;   /* Farbe JOBLINGE blau */
+font-family: EB Garamond; /* Schriftart */
+font-weight:400;
+}
+
+a {
+  color:black;
+  text-decoration: none;
+}
+
+a:hover {
+  color:black;
+  text-decoration: underline;
+}
+
+#header {
+  font-family: Verdana, Arial;
+  font-size: 1em;
+  overflow: hidden;
+  color: #4d4d4d;
+}
+
+#map {
+  height: 86%;
+  width: 100%;
+  float:left;
+
+}
+
+#content {
+  font-size: 1em;
+}
+
+#osm {
+  font-size: 0.7em;
+  font-style: italic;
+  margin-bottom: 20px;
+  float:right;
+}
+#footer {
+  background-color:#0093d3;
+  height: 100%;
+  width: 100%;
+  margin: 1%; padding: 0;
+  float: left;
+  font-family:Verdana, Arial;
+  font-size: 1em;
+  overflow: hidden;
+  color: black;
+}
